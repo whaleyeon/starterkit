@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>권소연 · IT Product Manager</title>
+  <meta name="description" content="사서이며 IT Product Manager인 권소연의 프로필 사이트" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans KR', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+</head>
+π
+<body class="font-sans bg-slate-100 text-slate-900 antialiased scroll-smooth">
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
+
+    <!-- Nav -->
+    <header class="sticky top-4 sm:top-6 z-50">
+      <nav class="flex items-center justify-between gap-3 rounded-full bg-white/90 backdrop-blur border border-slate-200 px-3 sm:px-5 h-14 shadow-sm">
+        <a href="#home" class="flex items-center gap-2 pl-2 font-bold tracking-tight">
+          <span class="grid place-items-center w-7 h-7 rounded-full bg-blue-600 text-white text-xs">권</span>
+          <span>권소연</span>
+        </a>
+
+        <!-- Desktop menu -->
+        <ul class="hidden md:flex items-center gap-7 text-sm text-slate-500">
+          <li><a href="#about" class="hover:text-blue-600 transition">소개</a></li>
+          <li><a href="#experience" class="hover:text-blue-600 transition">경험</a></li>
+          <li><a href="#portfolio" class="hover:text-blue-600 transition">포트폴리오</a></li>
+        </ul>
+
+        <div class="flex items-center gap-2">
+          <a href="#contact" class="hidden sm:inline-flex items-center rounded-full bg-slate-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-slate-700 transition">
+            연락하기
+          </a>
+          <!-- Mobile menu button -->
+          <button id="menu-btn" class="md:hidden grid place-items-center w-10 h-10 rounded-full hover:bg-slate-100 text-slate-700" aria-label="메뉴 열기" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile menu panel -->
+      <div id="mobile-menu" class="hidden md:hidden mt-2 rounded-3xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+        <ul class="flex flex-col p-2 text-sm text-slate-700">
+          <li><a href="#about" class="block rounded-2xl px-4 py-3 hover:bg-slate-50">소개</a></li>
+          <li><a href="#experience" class="block rounded-2xl px-4 py-3 hover:bg-slate-50">경험</a></li>
+          <li><a href="#portfolio" class="block rounded-2xl px-4 py-3 hover:bg-slate-50">포트폴리오</a></li>
+          <li><a href="#contact" class="block rounded-2xl px-4 py-3 text-blue-600 font-medium hover:bg-slate-50">연락하기</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main id="home" class="space-y-4 sm:space-y-6">
+
+      <!-- Hero (bento) -->
+      <section class="grid lg:grid-cols-5 gap-4 sm:gap-6">
+
+        <!-- Left: intro -->
+        <div class="lg:col-span-3 rounded-3xl bg-white border border-slate-200 p-8 sm:p-12 flex flex-col justify-between">
+          <div>
+            <span class="inline-flex items-center gap-2 rounded-full bg-blue-50 text-blue-700 text-xs font-medium px-3 py-1.5 mb-8">
+              <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
+              채용 제안 받는 중
+            </span>
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.05]">
+              안녕하세요,<br />
+              <span class="text-blue-600">IT 프로덕트</span>를<br />
+              만듭니다<sup class="text-slate-300 text-2xl align-super">©</sup>
+            </h1>
+            <p class="mt-7 text-base sm:text-lg text-slate-500 max-w-md leading-relaxed">
+              사서이며 IT Product Manager인 권소연입니다. 정보를 구조화하던 시선으로 사용자에게 가치 있는 제품을 설계합니다.
+            </p>
+          </div>
+          <div class="mt-10 flex flex-wrap items-center gap-3">
+            <a href="#contact" class="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-medium text-white hover:bg-blue-700 transition">
+              연락하기
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <a href="#portfolio" class="inline-flex items-center rounded-full border border-slate-200 px-6 py-3 text-sm font-medium text-slate-700 hover:border-blue-600 hover:text-blue-600 transition">
+              포트폴리오 보기
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: bento cards -->
+        <div class="lg:col-span-2 grid grid-cols-2 gap-4 sm:gap-6">
+          <!-- Profile card -->
+          <div class="col-span-2 rounded-3xl bg-gradient-to-br from-blue-500 to-blue-700 text-white p-7 flex flex-col justify-between min-h-[200px]">
+            <div class="flex items-center justify-between">
+              <span class="grid place-items-center w-14 h-14 rounded-2xl bg-white/15 backdrop-blur text-2xl font-bold">권</span>
+              <span class="text-xs uppercase tracking-widest text-blue-100">Profile</span>
+            </div>
+            <div>
+              <p class="text-2xl font-bold">권소연</p>
+              <p class="text-blue-100 text-sm mt-1">Librarian × Product Manager</p>
+            </div>
+          </div>
+          <!-- Role card -->
+          <div class="rounded-3xl bg-white border border-slate-200 p-6 flex flex-col justify-between">
+            <span class="text-xs uppercase tracking-widest text-slate-400">Role</span>
+            <p class="text-lg font-bold leading-snug mt-4">IT Product<br />Manager</p>
+          </div>
+          <!-- Location/Focus card -->
+          <div class="rounded-3xl bg-slate-900 text-white p-6 flex flex-col justify-between">
+            <span class="text-xs uppercase tracking-widest text-slate-400">Focus</span>
+            <p class="text-lg font-bold leading-snug mt-4">도서관 ×<br />테크놀로지</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="rounded-3xl bg-white border border-slate-200 p-8 sm:p-12">
+        <span class="text-xs uppercase tracking-widest text-blue-600 font-medium">About</span>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mt-3 mb-8">소개</h2>
+        <div class="max-w-2xl space-y-5 text-base sm:text-lg text-slate-600 leading-relaxed">
+          <p>
+            저는 IT 프로덕트를 만드는 Product Manager로 업무를 해왔고, 지금은 정보를 분류하고 연결하는 사서로 일하고 있습니다.
+          </p>
+          <p>
+            사용자의 맥락을 이해하고, 복잡한 요구사항을 명확한 제품 방향으로 정리하는 일을 좋아합니다. 데이터와 디자인을 오가며 문제의 본질을 찾고, 팀이 같은 그림을 보도록 돕습니다. 도서관과 IT를 연결하는 사람으로 기여하고 싶습니다.
+          </p>
+        </div>
+
+        <!-- Skills -->
+        <div class="mt-10 pt-8 border-t border-slate-100">
+          <span class="text-xs uppercase tracking-widest text-slate-400">Skills</span>
+          <div class="flex flex-wrap gap-3 mt-4">
+            <span class="rounded-full border border-blue-100 bg-blue-50 px-5 py-2.5 text-sm font-medium text-blue-700">Figma</span>
+            <span class="rounded-full border border-blue-100 bg-blue-50 px-5 py-2.5 text-sm font-medium text-blue-700">SQL</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section id="experience" class="rounded-3xl bg-white border border-slate-200 p-8 sm:p-12">
+        <div class="grid lg:grid-cols-5 gap-8">
+          <!-- Left heading -->
+          <div class="lg:col-span-2">
+            <span class="text-xs uppercase tracking-widest text-blue-600 font-medium">Experience</span>
+            <h2 class="text-2xl sm:text-4xl font-bold tracking-tight mt-3 leading-tight">
+              제 경험이<br />궁금하신가요?
+            </h2>
+            <a href="#contact" class="inline-flex items-center gap-2 mt-7 rounded-full bg-slate-900 px-6 py-3 text-sm font-medium text-white hover:bg-slate-700 transition">
+              이력 문의하기
+            </a>
+          </div>
+
+          <!-- Right timeline -->
+          <div class="lg:col-span-3 divide-y divide-slate-100">
+            <!-- Item (샘플 — 실제 경력으로 교체하세요) -->
+            <div class="flex items-start justify-between gap-4 py-5 first:pt-0">
+              <div>
+                <p class="font-semibold">IT Product Manager</p>
+                <p class="text-sm text-slate-500 mt-1">제품 기획 · 데이터 기반 의사결정</p>
+              </div>
+              <span class="shrink-0 text-sm text-slate-400">현재</span>
+            </div>
+            <div class="flex items-start justify-between gap-4 py-5">
+              <div>
+                <p class="font-semibold">사서 (Librarian)</p>
+                <p class="text-sm text-slate-500 mt-1">정보 분류 · 메타데이터 · 이용자 리서치</p>
+              </div>
+              <span class="shrink-0 text-sm text-slate-400">이전</span>
+            </div>
+            <div class="flex items-start justify-between gap-4 py-5">
+              <div>
+                <p class="font-semibold">교육 · 자격</p>
+                <p class="text-sm text-slate-500 mt-1">문헌정보학 전공 · 관련 자격</p>
+              </div>
+              <span class="shrink-0 text-sm text-slate-400">—</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Portfolio -->
+      <section id="portfolio" class="rounded-3xl bg-white border border-slate-200 p-8 sm:p-12">
+        <div class="flex flex-wrap items-end justify-between gap-3 mb-10">
+          <div>
+            <span class="text-xs uppercase tracking-widest text-blue-600 font-medium">Portfolio</span>
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mt-3">포트폴리오</h2>
+          </div>
+          <p class="text-sm text-slate-400">샘플 — 내용은 자유롭게 교체하세요</p>
+        </div>
+
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <!-- Card 1 -->
+          <article class="group rounded-3xl border border-slate-200 p-5 transition hover:border-blue-200 hover:shadow-lg hover:shadow-blue-100/50 hover:-translate-y-1">
+            <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 mb-5 grid place-items-center text-slate-300 text-4xl font-bold">01</div>
+            <h3 class="font-semibold mb-2">프로젝트 제목 1</h3>
+            <p class="text-sm text-slate-500 mb-4">어떤 문제를 어떻게 풀었는지 한 줄로 요약합니다.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs rounded-full bg-blue-50 px-3 py-1 text-blue-700">Product</span>
+              <span class="text-xs rounded-full bg-blue-50 px-3 py-1 text-blue-700">Figma</span>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="group rounded-3xl border border-slate-200 p-5 transition hover:border-blue-200 hover:shadow-lg hover:shadow-blue-100/50 hover:-translate-y-1">
+            <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-blue-100 to-blue-200 mb-5 grid place-items-center text-blue-300 text-4xl font-bold">02</div>
+            <h3 class="font-semibold mb-2">프로젝트 제목 2</h3>
+            <p class="text-sm text-slate-500 mb-4">핵심 성과나 본인의 역할을 강조해 적어보세요.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs rounded-full bg-blue-50 px-3 py-1 text-blue-700">Data</span>
+              <span class="text-xs rounded-full bg-blue-50 px-3 py-1 text-blue-700">SQL</span>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="group rounded-3xl border border-slate-200 p-5 transition hover:border-blue-200 hover:shadow-lg hover:shadow-blue-100/50 hover:-translate-y-1">
+            <div class="aspect-[4/3] rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 mb-5 grid place-items-center text-slate-300 text-4xl font-bold">03</div>
+            <h3 class="font-semibold mb-2">프로젝트 제목 3</h3>
+            <p class="text-sm text-slate-500 mb-4">사용자 가치나 임팩트를 담아 소개해보세요.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs rounded-full bg-blue-50 px-3 py-1 text-blue-700">Research</span>
+              <span class="text-xs rounded-full bg-blue-50 px-3 py-1 text-blue-700">UX</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="rounded-3xl bg-slate-900 text-white p-8 sm:p-16 text-center overflow-hidden relative">
+        <div class="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-blue-600/20 blur-3xl"></div>
+        <div class="relative">
+          <span class="text-xs uppercase tracking-widest text-blue-400 font-medium">Contact</span>
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mt-3 mb-4">함께 일해요</h2>
+          <p class="text-slate-400 mb-8 max-w-md mx-auto">새로운 기회나 협업 제안을 환영합니다. 편하게 메일 보내주세요.</p>
+          <a href="mailto:soyeonkwon@abc.com" class="inline-flex items-center gap-2 rounded-full bg-blue-600 px-7 py-3.5 text-sm font-medium text-white hover:bg-blue-500 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            soyeonkwon@abc.com
+          </a>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center text-sm text-slate-400 py-6">
+      © <span id="year">2026</span> 권소연. All rights reserved.
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

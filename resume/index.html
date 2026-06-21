@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ▼▼▼ 기본 메타 / SEO (본인 정보로 교체) ▼▼▼ -->
+  <title>김개발 — 프론트엔드 개발자</title>
+  <meta name="description" content="사용자 경험을 고민하는 프론트엔드 개발자 김개발의 웹 이력서입니다. React, TypeScript, 웹 접근성." />
+  <meta name="author" content="김개발" />
+  <meta name="theme-color" content="#09090b" />
+
+  <!-- Open Graph (SNS 공유 미리보기) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="김개발 — 프론트엔드 개발자" />
+  <meta property="og:description" content="사용자 경험을 고민하는 프론트엔드 개발자 김개발의 웹 이력서." />
+  <meta property="og:image" content="assets/images/og-image.png" />
+  <meta property="og:url" content="https://example.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <!-- ▲▲▲ 기본 메타 / SEO ▲▲▲ -->
+
+  <!-- 다크모드 깜빡임(FOUC) 방지: Tailwind 로드 전에 클래스 먼저 적용 -->
+  <script>
+    (function () {
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (stored === 'dark' || (!stored && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+
+  <!-- Tailwind CSS (CDN) — 색은 CSS 변수 토큰에 매핑하여 라이트/다크 일관 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            canvas: 'var(--canvas)',
+            card: 'var(--card)',
+            'card-2': 'var(--card-2)',
+            line: 'var(--line)',
+            ink: 'var(--ink)',
+            muted: 'var(--muted)',
+            faint: 'var(--faint)',
+            accent: 'var(--accent)',
+          },
+          fontFamily: {
+            sans: ['Pretendard', 'system-ui', 'sans-serif'],
+            mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body class="font-sans">
+
+  <!-- ============ Header / Navigation ============ -->
+  <header id="navbar">
+    <nav class="shell flex items-center justify-between h-16">
+      <a href="#hero" class="font-mono font-semibold text-sm tracking-tight text-ink">김개발<span class="text-accent">.dev</span></a>
+
+      <!-- 데스크톱 메뉴 -->
+      <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <li><a href="#about"      class="nav-link">소개</a></li>
+        <li><a href="#skills"     class="nav-link">기술</a></li>
+        <li><a href="#experience" class="nav-link">경력</a></li>
+        <li><a href="#education"  class="nav-link">학력</a></li>
+        <li><a href="#contact"    class="nav-link">연락처</a></li>
+      </ul>
+
+      <div class="flex items-center gap-1.5">
+        <!-- 다크모드 토글 -->
+        <button id="theme-toggle" type="button" aria-label="다크모드 전환"
+          class="p-2 rounded-full text-muted hover:text-ink hover:bg-card transition-colors">
+          <svg id="icon-sun" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.36 6.36l-.71-.71M6.34 6.34l-.71-.71m12.73 0l-.71.71M6.34 17.66l-.71.71M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg id="icon-moon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+
+        <!-- 모바일 햄버거 버튼 -->
+        <button id="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-menu"
+          class="md:hidden p-2 rounded-full text-muted hover:text-ink hover:bg-card transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- 모바일 드롭다운 메뉴 -->
+    <div id="mobile-menu" class="md:hidden hidden">
+      <ul class="shell py-4 space-y-1 text-sm font-medium">
+        <li><a href="#about"      class="block py-2.5 nav-link">소개</a></li>
+        <li><a href="#skills"     class="block py-2.5 nav-link">기술</a></li>
+        <li><a href="#experience" class="block py-2.5 nav-link">경력</a></li>
+        <li><a href="#education"  class="block py-2.5 nav-link">학력</a></li>
+        <li><a href="#contact"    class="block py-2.5 nav-link">연락처</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ Hero ============ -->
+    <section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
+      <div class="dot-grid" aria-hidden="true"></div>
+      <div class="shell reveal">
+        <span class="status-pill mb-6"><span class="status-dot" aria-hidden="true"></span>새로운 기회를 찾는 중</span>
+        <p class="font-mono text-sm text-accent mb-4 tracking-wide">// 프론트엔드 개발자</p>
+        <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.05]">
+          안녕하세요,<br />
+          <span class="text-ink">김개발</span>입니다.
+        </h1>
+        <p class="mt-6 max-w-xl text-lg text-muted leading-relaxed">
+          사용자 경험과 코드 품질, 두 가지를 모두 챙기는 개발자입니다.
+          복잡한 문제를 단순한 인터페이스로 풀어내는 일을 좋아합니다.
+        </p>
+        <div class="mt-9 flex flex-wrap items-center gap-3">
+          <a href="#contact" class="btn btn-primary">연락하기</a>
+          <a href="assets/resume.pdf" download class="btn btn-ghost">이력서 PDF
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <a href="#about" aria-label="아래로 스크롤" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-faint hover:text-accent transition-colors">
+        <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </a>
+    </section>
+
+    <!-- ============ About ============ -->
+    <section id="about" class="section">
+      <div class="shell">
+        <header class="section-head reveal">
+          <span class="kicker"><span class="num">01</span> About</span>
+          <h2 class="section-title">소개</h2>
+        </header>
+        <div class="reveal grid md:grid-cols-5 gap-10 items-start">
+          <div class="md:col-span-3 space-y-4 text-muted leading-relaxed">
+            <p>
+              3년 차 프론트엔드 개발자로, React 기반 SPA와 디자인 시스템 구축 경험이 있습니다.
+              복잡한 요구사항을 작은 컴포넌트로 쪼개고, 재사용 가능한 구조를 설계하는 일을 좋아합니다.
+            </p>
+            <p>
+              웹 접근성과 성능 최적화에 관심이 많아, Lighthouse 점수 개선과 키보드 내비게이션 대응을
+              꾸준히 챙겨 왔습니다. 새로운 기술을 학습하고 팀에 공유하는 것을 즐깁니다.
+            </p>
+          </div>
+          <dl class="md:col-span-2 grid grid-cols-2 gap-3">
+            <div class="card p-5">
+              <dt class="text-3xl font-bold text-ink">3<span class="text-accent">+</span></dt>
+              <dd class="text-sm text-faint mt-1">년 경력</dd>
+            </div>
+            <div class="card p-5">
+              <dt class="text-3xl font-bold text-ink">12<span class="text-accent">+</span></dt>
+              <dd class="text-sm text-faint mt-1">프로젝트</dd>
+            </div>
+            <div class="card p-5">
+              <dt class="text-3xl font-bold text-ink">5<span class="text-accent">+</span></dt>
+              <dd class="text-sm text-faint mt-1">기술 스택</dd>
+            </div>
+            <div class="card p-5">
+              <dt class="text-3xl font-bold text-ink">∞</dt>
+              <dd class="text-sm text-faint mt-1">학습 의지</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Skills ============ -->
+    <section id="skills" class="section">
+      <div class="shell">
+        <header class="section-head reveal">
+          <span class="kicker"><span class="num">02</span> Skills</span>
+          <h2 class="section-title">기술 스택</h2>
+        </header>
+        <div class="reveal card px-6">
+          <div class="skill-row">
+            <div class="skill-cat">Languages</div>
+            <div class="flex flex-wrap gap-2">
+              <span class="chip">JavaScript</span>
+              <span class="chip">TypeScript</span>
+              <span class="chip">HTML</span>
+              <span class="chip">CSS</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-cat">Frameworks</div>
+            <div class="flex flex-wrap gap-2">
+              <span class="chip">React</span>
+              <span class="chip">Next.js</span>
+              <span class="chip">Tailwind CSS</span>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-cat">Tools</div>
+            <div class="flex flex-wrap gap-2">
+              <span class="chip">Git</span>
+              <span class="chip">Vite</span>
+              <span class="chip">Jest</span>
+              <span class="chip">Figma</span>
+              <span class="chip">Storybook</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Experience / Projects ============ -->
+    <section id="experience" class="section">
+      <div class="shell">
+        <header class="section-head reveal">
+          <span class="kicker"><span class="num">03</span> Experience</span>
+          <h2 class="section-title">경력 · 프로젝트</h2>
+        </header>
+
+        <!-- 경력 타임라인 -->
+        <div class="reveal timeline space-y-10">
+          <div class="tl-item">
+            <p class="font-mono text-xs text-faint">2023.03 — 현재</p>
+            <h3 class="text-lg font-semibold mt-1">○○테크 · 프론트엔드 개발자</h3>
+            <p class="mt-2 text-muted leading-relaxed">
+              사내 디자인 시스템을 구축하고, 핵심 대시보드 SPA를 React + TypeScript로 리뉴얼했습니다.
+              초기 로딩 시간을 40% 단축했습니다.
+            </p>
+          </div>
+          <div class="tl-item">
+            <p class="font-mono text-xs text-faint">2021.06 — 2023.02</p>
+            <h3 class="text-lg font-semibold mt-1">△△소프트 · 웹 퍼블리셔 / 주니어 개발자</h3>
+            <p class="mt-2 text-muted leading-relaxed">
+              반응형 마케팅 페이지를 다수 제작하고, 레거시 jQuery 코드를 모던 JS로 점진적으로 마이그레이션했습니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- 프로젝트 카드 -->
+        <h3 class="reveal font-mono text-sm text-faint mt-16 mb-6">// 대표 프로젝트</h3>
+        <div class="reveal grid sm:grid-cols-2 gap-4">
+          <article class="card project-card p-6 flex flex-col">
+            <div class="flex items-center justify-between">
+              <span class="tech">01</span>
+              <div class="flex gap-3 text-faint">
+                <a href="#" aria-label="GitHub" class="hover:text-accent transition-colors">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12.06c0 5.1 3.29 9.41 7.86 10.94.58.11.79-.25.79-.56v-2.1c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.78 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.29-5.25-5.74 0-1.27.45-2.3 1.2-3.12-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.19a11 11 0 0 1 5.79 0c2.2-1.5 3.18-1.19 3.18-1.19.63 1.59.23 2.77.11 3.06.75.82 1.2 1.85 1.2 3.12 0 4.46-2.7 5.45-5.27 5.73.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56A11.55 11.55 0 0 0 23.5 12.06C23.5 5.73 18.27.5 12 .5z"/></svg>
+                </a>
+                <a href="#" aria-label="데모" class="hover:text-accent transition-colors">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5h5v5m0-5L10 14M9 5H5v14h14v-4" /></svg>
+                </a>
+              </div>
+            </div>
+            <h4 class="font-semibold text-lg mt-3">버킷리스트 웹앱</h4>
+            <p class="text-sm text-muted mt-2 leading-relaxed flex-1">
+              localStorage 기반 바닐라 JS 단일 페이지 앱. 필터·통계·다크모드 지원.
+            </p>
+            <div class="flex flex-wrap gap-x-3 gap-y-1 mt-4">
+              <span class="tech">HTML</span><span class="tech">CSS</span><span class="tech">JavaScript</span>
+            </div>
+          </article>
+
+          <article class="card project-card p-6 flex flex-col">
+            <div class="flex items-center justify-between">
+              <span class="tech">02</span>
+              <div class="flex gap-3 text-faint">
+                <a href="#" aria-label="GitHub" class="hover:text-accent transition-colors">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12.06c0 5.1 3.29 9.41 7.86 10.94.58.11.79-.25.79-.56v-2.1c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.78 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.29-5.25-5.74 0-1.27.45-2.3 1.2-3.12-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.19a11 11 0 0 1 5.79 0c2.2-1.5 3.18-1.19 3.18-1.19.63 1.59.23 2.77.11 3.06.75.82 1.2 1.85 1.2 3.12 0 4.46-2.7 5.45-5.27 5.73.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56A11.55 11.55 0 0 0 23.5 12.06C23.5 5.73 18.27.5 12 .5z"/></svg>
+                </a>
+                <a href="#" aria-label="데모" class="hover:text-accent transition-colors">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5h5v5m0-5L10 14M9 5H5v14h14v-4" /></svg>
+                </a>
+              </div>
+            </div>
+            <h4 class="font-semibold text-lg mt-3">디자인 시스템 라이브러리</h4>
+            <p class="text-sm text-muted mt-2 leading-relaxed flex-1">
+              재사용 컴포넌트 30여 개와 Storybook 문서를 제공하는 사내 UI 라이브러리.
+            </p>
+            <div class="flex flex-wrap gap-x-3 gap-y-1 mt-4">
+              <span class="tech">React</span><span class="tech">TypeScript</span><span class="tech">Storybook</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Education ============ -->
+    <section id="education" class="section">
+      <div class="shell">
+        <header class="section-head reveal">
+          <span class="kicker"><span class="num">04</span> Education</span>
+          <h2 class="section-title">학력 · 자격</h2>
+        </header>
+        <ul class="reveal space-y-3">
+          <li class="card p-5 flex items-center gap-4">
+            <div class="flex-shrink-0 w-11 h-11 rounded-xl bg-card-2 flex items-center justify-center text-xl">🎓</div>
+            <div class="flex-1">
+              <h3 class="font-semibold">○○대학교 컴퓨터공학과 학사</h3>
+              <p class="text-sm text-faint mt-0.5">2017.03 — 2021.02</p>
+            </div>
+          </li>
+          <li class="card p-5 flex items-center gap-4">
+            <div class="flex-shrink-0 w-11 h-11 rounded-xl bg-card-2 flex items-center justify-center text-xl">📜</div>
+            <div class="flex-1">
+              <h3 class="font-semibold">정보처리기사</h3>
+              <p class="text-sm text-faint mt-0.5">2021.05 취득</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ Contact ============ -->
+    <section id="contact" class="section">
+      <div class="shell reveal">
+        <header class="section-head">
+          <span class="kicker"><span class="num">05</span> Contact</span>
+          <h2 class="section-title">함께 일해요</h2>
+        </header>
+        <p class="text-muted leading-relaxed max-w-lg">
+          새로운 기회나 협업 제안은 언제든 환영합니다. 편하게 메일 주세요.
+        </p>
+        <a href="mailto:hello@example.com" class="mail-link inline-block mt-6">hello@example.com</a>
+
+        <!-- ▼▼▼ SNS 링크 (각 href를 본인 계정 URL로 교체) ▼▼▼ -->
+        <ul class="flex flex-wrap items-center gap-3 mt-10">
+          <li>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-link">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 .5C5.73.5.5 5.73.5 12.06c0 5.1 3.29 9.41 7.86 10.94.58.11.79-.25.79-.56v-2.1c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.2 1.77 1.2 1.03 1.78 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.29-5.25-5.74 0-1.27.45-2.3 1.2-3.12-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.19a11 11 0 0 1 5.79 0c2.2-1.5 3.18-1.19 3.18-1.19.63 1.59.23 2.77.11 3.06.75.82 1.2 1.85 1.2 3.12 0 4.46-2.7 5.45-5.27 5.73.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56A11.55 11.55 0 0 0 23.5 12.06C23.5 5.73 18.27.5 12 .5z"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="social-link">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2C0 8.08 0 12 0 12s0 3.92.5 5.8a3.02 3.02 0 0 0 2.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14C24 15.92 24 12 24 12s0-3.92-.5-5.8zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-link">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.86 5.86 0 0 0-2.13 1.38A5.86 5.86 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13a5.86 5.86 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.86 5.86 0 0 0 2.13-1.38 5.86 5.86 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.86 5.86 0 0 0-1.38-2.13A5.86 5.86 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.41a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-link">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.74v20.52C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.74V1.74C24 .78 23.2 0 22.22 0z"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" class="social-link">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.83L0 1.15h7.6l5.24 6.93 6.06-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3L17.61 20.65z"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+        <!-- ▲▲▲ SNS 링크 ▲▲▲ -->
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ Footer ============ -->
+  <footer class="border-t border-line">
+    <div class="shell py-8 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-faint">
+      <p>© <span id="year"></span> 김개발</p>
+      <p class="font-mono text-xs">Built with HTML · Tailwind · JS</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top 버튼 -->
+  <button id="back-to-top" type="button" aria-label="맨 위로 이동">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
