@@ -1,0 +1,12 @@
+/* Tailwind CSS v4 — tailwind.config 파일 없이 CSS만으로 설정 */
+@import "tailwindcss";
+
+/* @theme 블록: 커스텀 디자인 토큰 정의 */
+@theme {
+  /* 브랜드 컬러 — Button 컴포넌트의 bg-brand / text-brand 등에 사용 */
+  --color-brand: #6366f1;
+
+  /* 폰트 패밀리 — layout.tsx의 next/font 변수와 연결 */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
