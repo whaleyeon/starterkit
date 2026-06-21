@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Claude Code 로컬 설정
+.claude/
+
+# 에디터
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# 의존성 (향후 npm 사용 시)
+node_modules/
+
+# 빌드 산출물
+dist/
+build/
